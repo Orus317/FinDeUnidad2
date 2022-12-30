@@ -1,12 +1,12 @@
 ﻿namespace EstDatos
 {
     // Acá deben ir las estructuras de datos que se avanzaron de acuerdo a las prácticas
-    class CListaRecursiva
+    public class CListaRecursiva
     {
         private CListaRecursiva? _aSublista = null;
         private object? _aElemento = null;
 
-        CListaRecursiva? aSublista { get => _aSublista; set => _aSublista = value; }
+        public CListaRecursiva? aSublista { get => _aSublista; set => _aSublista = value; }
         public object? aElemento { get => _aElemento; set => _aElemento = value; }
         #region Constructores
         public CListaRecursiva(CListaRecursiva Sublista, object Elemento)
@@ -18,6 +18,11 @@
         {
             aSublista = new(null, null);
             aElemento = Elemento;
+        }
+        public CListaRecursiva()
+        {
+            _aSublista = null;
+            _aElemento = null;
         }
         #endregion
         #region Methods
@@ -76,7 +81,7 @@
                 return aSublista.Longitud(k);
             }
         }
-        public string GetElement(int position, int hold = 0)
+        public object GetElement(int position, int hold = 0)
         {
             if (!EsVacia() && hold <= position)
             {
@@ -87,7 +92,7 @@
                 }
                 else
                 {
-                    return aElemento.ToString();
+                    return aElemento;
                 }
             }
             else
