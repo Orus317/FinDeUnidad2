@@ -57,8 +57,4 @@
         #endregion          
     }
 
-    public class CListaObjetos
-    {
-
-    }
 }
