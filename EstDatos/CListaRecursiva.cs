@@ -83,7 +83,7 @@
                 if (hold != position)
                 {
                     hold++;
-                    return aSublista.Get(position, hold);
+                    return aSublista.GetElement(position, hold);
                 }
                 else
                 {
