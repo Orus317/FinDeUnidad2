@@ -55,6 +55,10 @@
             Console.WriteLine("Identificador: " + Id);
         }
         #endregion          
+    }
+
+    public class CListaObjetos
+    {
 
     }
 }
