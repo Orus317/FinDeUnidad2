@@ -12,11 +12,11 @@
         #region  CONSTRUCTORES
         public CObjeto()
         {
-            aId = "";
+            Id = "";
         }
         public CObjeto(string pId)
         {
-            aId = pId;
+            Id = pId;
         }
         #endregion   
 
