@@ -1,6 +1,6 @@
 ﻿namespace EstDatos
 {
-    public interface ILista
+    public interface IListaEnlazada
     {
         /// <summary>
         /// Método para determinar si un nodo/elemento de la lista es vacío
@@ -90,7 +90,7 @@
         }
         #endregion
     }
-    public class CListaEnlazada : ILista
+    public class CListaEnlazada : IListaEnlazada
     {
         #region Atributos y propiedades
         private CNodoLista? _node;
