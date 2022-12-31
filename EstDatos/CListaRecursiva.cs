@@ -1,74 +1,133 @@
-﻿namespace EstDatos
-{
-    // Acá deben ir las estructuras de datos que se avanzaron de acuerdo a las prácticas
-    public class CListaRecursiva
-    {
-        private CListaRecursiva? _aSublista = null;
-        private object? _aElemento = null;
+﻿using System.Diagnostics.Contracts;
 
-        public CListaRecursiva? aSublista { get => _aSublista; set => _aSublista = value; }
-        public object? aElemento { get => _aElemento; set => _aElemento = value; }
+namespace EstDatos
+{
+    public interface ILista
+    {
+        /// <summary>
+        /// Método para determinar si un nodo/elemento de la lista es vacío
+        /// </summary>
+        /// <returns>True or False</returns>
+        bool EsVacia();
+        /// <summary>
+        /// Método para calcular la cantidad de elementos
+        /// </summary>
+        /// <param name="k">Contador</param>
+        /// <returns></returns>
+        int Longitud(int k = 0);
+        /// <summary>
+        /// Método para agregar un elemento a la lista (al final)
+        /// </summary>
+        void Agregar(object Element);
+        /// <summary>
+        /// Método para insertar un elemento en una posición determinada
+        /// </summary>
+        /// <param name="Element">Elemento a colocar</param>
+        /// <param name="Position">Posición en la que colocar</param>
+        void Insertar(object Element, int Position);
+        /// <summary>
+        /// Retornar el elemento de la posición "Position"
+        /// </summary>
+        /// <param name="Position">Posición solicitada</param>
+        /// <returns></returns>
+        object Iesimo(int Position, int hold);
+        /// <summary>
+        /// Método para buscar un elemento
+        /// </summary>
+        /// <param name="Element">Elemento a ser buscado</param>
+        /// <returns></returns>
+        int Ubicacion(object Element);
+        /// <summary>
+        /// Elimina un elemento de la lista
+        /// </summary>
+        /// <param name="Position">Elemento a eliminar</param>
+        void Eliminar(int Position);
+        /// <summary>
+        /// Lista todos los elementos
+        /// </summary>
+        void Listar();
+    }
+    // Acá deben ir las estructuras de datos que se avanzaron de acuerdo a las prácticas
+    public class CListaRecursiva : ILista
+    {
+        #region Atributos y Campos
+        // Se declaran los atributos de una lista recursiva: la sublista y el elemento que contiene
+        private CListaRecursiva? _aSublista;
+        private object? _aElemento;
+        private CListaRecursiva? ASublista { get => _aSublista; set => _aSublista = value; }
+        public object? AElemento { get => _aElemento; set => _aElemento = value; }
+        #endregion
         #region Constructores
-        public CListaRecursiva(CListaRecursiva Sublista, object Elemento)
+        public CListaRecursiva()
         {
-            aSublista = Sublista;
-            aElemento = Elemento;
+            // Constructor predeterminado
+            _aSublista = null;
+            _aElemento = null;
         }
         public CListaRecursiva(object Elemento)
         {
-            aSublista = new(null, null);
-            aElemento = Elemento;
+            // Constructor que crea una sublista nula y almacena un elemento en la lista actual
+            ASublista = new(null, null);
+            AElemento = Elemento;
         }
-        public CListaRecursiva()
+        public CListaRecursiva(CListaRecursiva Sublista, object Elemento)
         {
-            _aSublista = null;
-            _aElemento = null;
+            // Constructor que enlaza una sublista y contiene un elemento
+            ASublista = Sublista;
+            AElemento = Elemento;
         }
         #endregion
         #region Methods
         public bool EsVacia()
         {
-            return aElemento == null && aSublista == null;
+            return AElemento == null && ASublista == null;
         }
         public void Agregar(object Elemento)
         {
             if (EsVacia())
             {
-                aSublista = new(null, null);
-                aElemento = Elemento;
+                ASublista = new(null, null);
+                AElemento = Elemento;
             }
             else
             {
-                aSublista.Agregar(Elemento);
+                // Ejecución recursiva para acceder a la siguiente sublista hasta encontrar la que esté vacía
+                ASublista.Agregar(Elemento);
             }
         }
-        public void Insertar(int i, object Elemento)
+        public void Insertar(object Elemento, int Position)
         {
-            if (i == 0)
+            if (Position == 0)
             {
-                aSublista = new(aSublista, aElemento);
-                aElemento = Elemento;
+                // Se crea un apuntador que replique el elemento y se enlace tanto con el elemento que se inserta como con el que presigue al que está siendo desplazado
+                ASublista = new(ASublista, AElemento);
+                // Se reemplaza el elemento
+                AElemento = Elemento;
             }
             else
             {
+                // Verificar que el elemento no sea nulo para la inserción
                 if (!EsVacia())
                 {
-                    aSublista.Insertar(i - 1, Elemento);
+                    // Se hace el llamado recursivo y se avanza en la lista
+                    ASublista.Insertar(Elemento, Position - 1);
                 }
             }
         }
         public void Listar()
         {
+            // 
             if (!EsVacia())
             {
-                Console.Write(aElemento.ToString() + ", ");
-                aSublista.Listar();
+                Console.Write(AElemento.ToString() + ", ");
+                ASublista.Listar();
             }
             else
             {
                 Console.WriteLine(" /");
             }
         }
+        //
         public int Longitud(int k = 0)
         {
             if (EsVacia())
@@ -78,21 +137,21 @@
             else
             {
                 k++;
-                return aSublista.Longitud(k);
+                return ASublista.Longitud(k);
             }
         }
-        public object GetElement(int position, int hold = 0)
+        public object Iesimo(int position, int hold = 0)
         {
             if (!EsVacia() && hold <= position)
             {
                 if (hold != position)
                 {
                     hold++;
-                    return aSublista.GetElement(position, hold);
+                    return ASublista.Iesimo(position, hold);
                 }
                 else
                 {
-                    return aElemento;
+                    return AElemento;
                 }
             }
             else
@@ -108,16 +167,20 @@
             }
             else
             {
-                if (aElemento.Equals(e))
+                if (AElemento.Equals(e))
                 {
                     return 1;
                 }
                 else
                 {
-                    int k = aSublista.Ubicacion(e);
+                    int k = ASublista.Ubicacion(e);
                     return (k == 0 ? 0 : k + 1);
                 }
             }
+        }
+        public void Eliminar(int Position)
+        {
+            
         }
         #endregion
     }
