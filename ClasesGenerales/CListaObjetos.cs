@@ -57,7 +57,7 @@ namespace ClasesGenerales
             int I = Indice(pId);
             if (I >= 0)
             {
-                CObjeto Objeto = (Listado.GetElement(I) as CObjeto);
+                CObjeto Objeto = (Listado.Iesimo(I) as CObjeto);
                 Objeto.Mostrar();
             }
             else
@@ -80,8 +80,8 @@ namespace ClasesGenerales
             // ----- Recorrer la lista y seleccionar objetos para la sublista
             for (int K = 0; K < Listado.Longitud(); K++)
                 // ----- Procesar K-ésimo Objeto
-                if ((deSeleccionarObjeto == null) || deSeleccionarObjeto(Listado.GetElement(K)))
-                    Aux.Agregar(Listado.GetElement(K));
+                if ((deSeleccionarObjeto == null) || deSeleccionarObjeto(Listado.Iesimo(K)))
+                    Aux.Agregar(Listado.Iesimo(K));
             // ----- Retornar sub lista
             return Aux;
         }
@@ -93,9 +93,9 @@ namespace ClasesGenerales
             for (int K = 0; K < Listado.Longitud(); K++)
                 // ----- Procesar K-ésimo Objeto
                 if (deProcesarObjeto != null)
-                    deProcesarObjeto(Listado.GetElement(K));
+                    deProcesarObjeto(Listado.Iesimo(K));
                 else
-                    ProcesarObjeto(Listado.GetElement(K));
+                    ProcesarObjeto(Listado.Iesimo(K));
         }
 
         #endregion
