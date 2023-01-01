@@ -127,23 +127,46 @@ namespace EstDatos
                 Console.WriteLine(" /");
             }
         }
-        //
         public int Longitud(int k = 0)
         {
             if (EsVacia())
             {
+                // Si la lista está vacía retornará cero
                 return k;
             }
             else
             {
+                // se adiciona uno y se adentra un nivel más en la recursión de la lista
                 k++;
                 return ASublista.Longitud(k);
+            }
+        }
+        public object Iesimo(int position, bool returnSubList, int hold = 0)
+        {
+            // Este método privado de localización de objetos esta dotado de poder devolver el objeto sublista 
+            if (!EsVacia() && hold <= position)
+            {
+
+                if (hold != position)
+                {
+                    hold++;
+                    return ASublista.Iesimo(position, returnSubList, hold);
+                }
+                else
+                {
+                    return returnSubList ? this : AElemento;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
         public object Iesimo(int position, int hold = 0)
         {
             if (!EsVacia() && hold <= position)
             {
+
                 if (hold != position)
                 {
                     hold++;
@@ -159,7 +182,7 @@ namespace EstDatos
                 return "NE";
             }
         }
-        public int Ubicacion(object e)
+        private int ubicacion(object e)
         {
             if (EsVacia())
             {
@@ -173,14 +196,31 @@ namespace EstDatos
                 }
                 else
                 {
-                    int k = ASublista.Ubicacion(e);
+                    int k = ASublista.ubicacion(e);
                     return (k == 0 ? 0 : k + 1);
                 }
             }
         }
+        public int Ubicacion(object e)
+        {
+            // Retorna el índice del elemento pasado
+            return ubicacion(e) - 1;
+        }
         public void Eliminar(int Position)
         {
-            
+            if (!EsVacia())
+            {
+                if (Position == 0)
+                {
+                    AElemento = ASublista.AElemento;
+                    ASublista = ASublista.ASublista;
+                }
+                else
+                {
+                    CListaRecursiva previousElement = (CListaRecursiva)Iesimo(Position - 1, true);
+                    previousElement.ASublista = previousElement.ASublista.ASublista;
+                }
+            }
         }
         #endregion
     }
