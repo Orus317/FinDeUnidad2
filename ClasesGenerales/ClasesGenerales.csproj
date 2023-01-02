@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppBiblioteca\AppBiblioteca.csproj" />
     <ProjectReference Include="..\EstDatos\EstDatos.csproj" />
   </ItemGroup>
 

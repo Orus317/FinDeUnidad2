@@ -69,6 +69,7 @@ namespace ClasesGenerales
         public virtual void ProcesarObjeto(Object O)
         {
             CObjeto Objeto = O as CObjeto;
+            // Mostrar ID del objeto en pantalla
             Objeto.Escribir();
         }
 
@@ -87,7 +88,7 @@ namespace ClasesGenerales
         }
 
         // ==============================================================
-        public void RecorrerListado()
+        public void Listar()
         {
             // ----- Recorrer listado para procesar cada objeto de la lista
             for (int K = 0; K < Listado.Longitud(); K++)

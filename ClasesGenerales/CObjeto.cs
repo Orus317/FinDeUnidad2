@@ -1,6 +1,7 @@
 ﻿namespace ClasesGenerales
 {
     // Acá van las clases: CObjeto, CListaObjetos (que debe funcionar con la lista recursiva)
+    //public abstract class CObjeto
     public class CObjeto
     {
         #region  ATRIBUTOS 
