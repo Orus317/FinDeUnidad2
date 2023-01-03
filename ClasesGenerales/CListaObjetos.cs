@@ -6,7 +6,7 @@ namespace ClasesGenerales
     public delegate void DelegadoProcesarObjeto(object O);
     public delegate bool DelegadoSeleccionarObjeto(object O);
 
-    public class CListaObjetos
+    public abstract class CListaObjetos
     {
         #region  ATRIBUTOS 
         private CListaRecursiva aListado;
@@ -34,7 +34,7 @@ namespace ClasesGenerales
 
 
         #region    OTROS     
-        public void Agregar(CObjeto Objeto)
+        public virtual void Agregar(CObjeto Objeto)
         {
             // ----- Verificar que objeto no exista en la lista
             if (Indice(Objeto) < 0)
@@ -70,7 +70,7 @@ namespace ClasesGenerales
         {
             CObjeto Objeto = O as CObjeto;
             // Mostrar ID del objeto en pantalla
-            Objeto.Escribir();
+            Objeto.EscribirID();
         }
 
         // ==============================================================

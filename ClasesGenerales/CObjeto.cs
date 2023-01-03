@@ -1,19 +1,20 @@
 ﻿namespace ClasesGenerales
 {
     // Acá van las clases: CObjeto, CListaObjetos (que debe funcionar con la lista recursiva)
-    //public abstract class CObjeto
-    public class CObjeto
+    //public class CObjeto
+    public abstract class CObjeto
     {
         #region  ATRIBUTOS 
-        private string _Id;
+        private string? _Id;
 
-        public string Id { get => _Id; set => _Id = value; }
+        public string? Id { get => _Id; set => _Id = value; }
         #endregion
 
         #region  CONSTRUCTORES
         public CObjeto()
         {
-            Id = "";
+            // Constructor de un objeto vacío
+            Id = null;
         }
         public CObjeto(string pId)
         {
@@ -35,14 +36,14 @@
         }
 
         // ================================================================
-        public virtual void Leer()
+        public virtual void Registrar()
         {
             Console.Write("Identificador: ");
             Id = Console.ReadLine();
         }
 
         // ================================================================
-        public virtual void Escribir()
+        public virtual void EscribirID()
         {
             Console.WriteLine(Id);
         }
@@ -50,8 +51,6 @@
         // ================================================================
         public virtual void Mostrar()
         {
-            Console.WriteLine();
-            Console.WriteLine("DATOS DE OBJETO");
             Console.WriteLine("================");
             Console.WriteLine("Identificador: " + Id);
         }
