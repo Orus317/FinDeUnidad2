@@ -1,4 +1,5 @@
-﻿using ClasesGenerales;
+﻿using System.Xml.Serialization;
+using ClasesGenerales;
 
 namespace AppBiblioteca
 {
@@ -14,14 +15,20 @@ namespace AppBiblioteca
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
+        public void Agregar(string IdLector, string Apellido, string Nombre, string Direccion, string Sexo, int Edad)
+        {
+            // Método agregar para agregar métodos directamente desde el programa
+            CLector _ = new(IdLector, Apellido, Nombre, Direccion, Sexo, Edad);
+            base.Agregar(_);
+        }
         public void Consultar()
         {
-            Console.WriteLine("Escriba el ID o nombre/apellido del lector que desea buscar: ");
+            Console.Write("Escriba el ID o nombre/apellido del lector que desea buscar: ");
             // Obtención del ID
             string KeyWord = Console.ReadLine();
             base.Consultar(KeyWord);
         }
-        public void Listar()
+        public new void Listar()
         {
             // Se define el delegado para ejecutar la función heredada con el delegado que mostrará cada objeto
             deProcesarObjeto = delegate (Object Objeto)
@@ -32,6 +39,13 @@ namespace AppBiblioteca
                 }
             };
             base.Listar();
+        }
+        public void Eliminar()
+        {
+            Console.Write("Escriba el ID o nombre/apellido del lector que desea eliminar: ");
+            string KeyWord = Console.ReadLine();
+            int Position = Indice(KeyWord);
+            base.Eliminar(Position);
         }
         #endregion
     }

@@ -6,10 +6,17 @@ namespace AppBiblioteca
     {
         private CListaLectores _ListaLectores;
         public CListaLectores ListaLectores { get => _ListaLectores; set => _ListaLectores = value; }
+        #region Constructores
         public CControlLectores()
         {
             ListaLectores = new();
         }
+        public CControlLectores(CListaLectores listaLectores)
+        {
+            // Constructor para trabajar con listas que ya contengan elementos
+            ListaLectores = listaLectores;
+        }
+        #endregion
         #region Metodos
         public void Menu()
         {
@@ -18,7 +25,8 @@ namespace AppBiblioteca
             Console.WriteLine("1. Registrar lector");
             Console.WriteLine("2. Consultar lector");
             Console.WriteLine("3. Listar lectores");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("4. Eliminar lector");
+            Console.WriteLine("5. Salir");
         }
         public void Ejecutar()
         {
@@ -26,7 +34,8 @@ namespace AppBiblioteca
             do
             {
                 Menu();
-                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 4", 1, 4);
+                Console.Write("--> ");
+                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 5", 1, 5);
                 switch (Opcion)
                 {
                     case 1:
@@ -37,6 +46,9 @@ namespace AppBiblioteca
                         break;
                     case 3:
                         ListaLectores.Listar();
+                        break;
+                    case 4:
+                        ListaLectores.Eliminar();
                         break;
                     default:
                         break;

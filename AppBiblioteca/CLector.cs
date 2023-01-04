@@ -41,15 +41,15 @@ namespace AppBiblioteca
         #region Metodos
         public override bool Equals(object Objeto)
         {
+            if (Objeto is string TextToCompare)
+            {
+                // Retornará True si buscamos por nombre o apellido y la cadena pasada es contenida 
+                return (Nombre.ToUpper()).Contains(TextToCompare.ToUpper()) || (Apellido.ToUpper()).Contains(TextToCompare.ToUpper()) || Id.Contains(TextToCompare);
+            }
             if (base.Equals(Objeto))
             {
                 // Retorna 'true' si coincide por ID
                 return true;
-            }
-            else if (Objeto is CLector LectorAComparar)
-            {
-                // Retornará True si buscamos por nombre
-                return LectorAComparar.Nombre.Contains(Nombre) || LectorAComparar.Apellido == Apellido;
             }
             else
             {
@@ -78,7 +78,7 @@ namespace AppBiblioteca
             Direccion = Console.ReadLine();
             Console.Write("Sexo: ");
             Sexo = Console.ReadLine();
-            Console.WriteLine("Edad: ");
+            Console.Write("Edad: ");
             Edad = Utilidades.ValidarEntero("Debe ser un número positivo", 0, int.MaxValue);
         }
         #endregion
