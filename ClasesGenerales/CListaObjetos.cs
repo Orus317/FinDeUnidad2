@@ -47,7 +47,7 @@ namespace ClasesGenerales
         // ==============================================================
         public int Indice(Object Objeto)
         {
-            return Listado.Ubicacion(Objeto.ToString());
+            return Listado.Ubicacion(Objeto);
         }
 
         // ==============================================================
@@ -98,7 +98,14 @@ namespace ClasesGenerales
                 else
                     ProcesarObjeto(Listado.Iesimo(K));
         }
-
+        public void Eliminar(CObjeto Objeto)
+        {
+            int Position = Indice(Objeto);
+            if (Position != -1)
+                Listado.Eliminar(Position);
+            else
+                Console.WriteLine("El objeto no existe en esta lista");
+        }
         #endregion
     }
 }
