@@ -106,6 +106,14 @@ namespace ClasesGenerales
             else
                 Console.WriteLine("El objeto no existe en esta lista");
         }
+        public void Eliminar(int Position)
+        {
+            // Sobrecarga de Eliminar que ejecuta directamente el "Eliminar" de la lista recursiva
+            if (Position != -1)
+                Listado.Eliminar(Position);
+            else
+                Console.WriteLine("El objeto no existe en esta lista");
+        }
         #endregion
     }
 }
