@@ -6,7 +6,7 @@ using AppBiblioteca;
 using AppBiblioteca;
 
 CControlTesis Tesis = new();
-CControlLectores Lectores = new();
+// CControlLectores Lectores = new();
 CControlPrestamo Prestamos = new();
 
 CListaLectores Lectores = new();
@@ -18,12 +18,13 @@ Lectores.Agregar("115", "Quispe", "Fernando", "Av. Brasil", "M", 22);
 Lectores.Agregar("116", "Puma", "Lia", "Av. Brasil", "F", 23);
 Lectores.Agregar("117", "Espinoza", "Ian", "Av. Brasil", "M", 24);
 Lectores.Agregar("118", "Mamamni", "Wilse", "Av. Brasil", "F", 25);
+CControlLectores nuevoControl = new(Lectores);
+
 while (true)
 {
-	CMenu.MostrarMenu(Tesis, Lectores, Prestamos);
+CMenu.MostrarMenu(Tesis, nuevoControl, Prestamos);
 }
 
 
-CControlLectores nuevoControl = new(Lectores);
-nuevoControl.Ejecutar();
+// nuevoControl.Ejecutar();
 // ----------------------------------------------------------------------
