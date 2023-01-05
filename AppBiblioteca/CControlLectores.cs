@@ -19,6 +19,8 @@ namespace AppBiblioteca
             Console.WriteLine("2. Consultar lector");
             Console.WriteLine("3. Listar lectores");
             Console.WriteLine("4. Salir");
+            Console.WriteLine();
+            Console.Write(" -- Ingrese la opción: ");
         }
         public void Ejecutar()
         {
