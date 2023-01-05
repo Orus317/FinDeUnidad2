@@ -4,7 +4,7 @@
     {
         public static int ValidarEntero(string message, int low, int high)
         {
-            Console.Write("Ingrese el valor: ");
+            // Console.Write("Ingrese el valor: ");
             // Modulo para validar un entero entre dos límites
             string _opcion = Console.ReadLine();
             int opcion = 0;
