@@ -105,7 +105,7 @@ Devoluciones.Agregar("3030", "27/08/2022", "2030", Prestamos);
 
 CControlLectores nuevoControl_Lectores = new(Lectores);
 CControlTesis nuevoControl_Tesis = new(Tesis);
-CControlPrestamo nuevoControl_Prestamo = new(Prestamos, Lectores, Tesis);
+CControlPrestamo nuevoControl_Prestamo = new(Prestamos, Lectores, Tesis, Devoluciones);
 CControlDevoluciones nuevoControl_Devoluciones = new(Devoluciones, Prestamos);
 
 while (true)

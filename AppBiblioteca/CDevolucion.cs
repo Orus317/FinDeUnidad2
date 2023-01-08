@@ -57,6 +57,10 @@ namespace AppBiblioteca
                 // Retornará True si buscamos por nombre
                 return DevolucionAComparar.Id == Id;
             }
+            else if (Objeto is CPrestamo PrestamoAComparar)
+            {
+                return PrestamoAComparar.Id == IdPrestamo;
+            }
             else
             {
                 return false;

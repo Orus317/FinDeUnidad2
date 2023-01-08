@@ -7,20 +7,23 @@ namespace AppBiblioteca
         private CListaPrestamo _ListaPrestamo;
         private CListaLectores _ListaLectores;
         private CListaTesis _ListaTesis;
+        private CListaDevoluciones _ListaDevoluciones;
         public CListaPrestamo ListaPrestamo { get => _ListaPrestamo; set => _ListaPrestamo = value; }
         public CListaLectores ListaLectores { get => _ListaLectores; set => _ListaLectores = value; }
         public CListaTesis ListaTesis { get => _ListaTesis; set => _ListaTesis = value; }
+        public CListaDevoluciones ListaDevoluciones { get => _ListaDevoluciones; set => _ListaDevoluciones = value; }
 
         public CControlPrestamo()
         {
             ListaPrestamo = new();
             ListaLectores = new();
         }
-        public CControlPrestamo(CListaPrestamo listaPrestamo, CListaLectores Lectores, CListaTesis Tesis)
+        public CControlPrestamo(CListaPrestamo listaPrestamo, CListaLectores Lectores, CListaTesis Tesis, CListaDevoluciones Devoluciones)
         {
             ListaPrestamo = listaPrestamo;
             ListaLectores = Lectores;
             ListaTesis = Tesis;
+            ListaDevoluciones = Devoluciones;
         }
         public void Menu()
         {
@@ -31,7 +34,8 @@ namespace AppBiblioteca
             Console.WriteLine("2. Consultar préstamo");
             Console.WriteLine("3. Listar préstamos");
             Console.WriteLine("4. Eliminar Prestamo");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("5. Listar tesis no devueltas");
+            Console.WriteLine("6. Salir");
             Console.WriteLine();
             Console.Write(" -- Ingrese la opción: ");
         }
@@ -57,11 +61,14 @@ namespace AppBiblioteca
                     case 4:
                         ListaPrestamo.Eliminar();
                         break;
+                    case 5:
+                        ListaPrestamo.NoDevueltos(ListaDevoluciones);
+                    break;
                     default:
                         break;
                 }
 
-            } while (0 < Opcion && Opcion < 5);
+            } while (0 < Opcion && Opcion < 6);
         }
 
     }

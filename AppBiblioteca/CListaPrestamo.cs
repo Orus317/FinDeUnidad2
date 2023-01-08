@@ -1,11 +1,17 @@
 using ClasesGenerales;
+using EstDatos;
 
 namespace AppBiblioteca
 {
     public class CListaPrestamo : CListaObjetos
     {
         public CListaPrestamo() : base() { }
-        #region Metodos
+
+        public CListaPrestamo(CListaRecursiva Lista) : base(Lista)
+        {
+        }
+
+        #region Metodos 
         public void Agregar(CListaLectores Lectores, CListaTesis Tesis)
         {
             // Creación del objeto y registro de los datos a través de consola
@@ -27,7 +33,19 @@ namespace AppBiblioteca
             else
                 Console.WriteLine("No existe el lector indicado");
         }
-
+        public void NoDevueltos(CListaDevoluciones Devoluciones)
+        {
+            deSeleccionarObjeto = delegate (object O)
+            {
+                CPrestamo PrestamoToCompare = (CPrestamo)O;
+                return Devoluciones.Indice(PrestamoToCompare) == -1;
+            };
+            CListaRecursiva _ = GenerarSubLista();
+            CListaPrestamo SubLista = new(_);
+            Console.WriteLine($"*****************************TESIS NO DEVUELTAS*****************************");
+            SubLista.Listar();
+            Console.WriteLine($"****************************************************************************");
+        }
         public void Consultar()
         {
             Console.WriteLine("Escriba el ID del préstamo a buscar: ");

@@ -30,6 +30,10 @@ namespace ClasesGenerales
         {
             aListado = new CListaRecursiva();
         }
+        public CListaObjetos(CListaRecursiva Lista)
+        {
+            aListado = Lista;
+        }
         #endregion  CONSTRUCTORES 
 
 
@@ -74,15 +78,23 @@ namespace ClasesGenerales
         }
 
         // ==============================================================
-        public CListaRecursiva GenerarSubLista()
+        public virtual CListaRecursiva GenerarSubLista()
         {
             // ----- Generar lista vacia
-            CListaRecursiva Aux = new CListaRecursiva();
+            CListaRecursiva Aux = new();
             // ----- Recorrer la lista y seleccionar objetos para la sublista
             for (int K = 0; K < Listado.Longitud(); K++)
+            {
                 // ----- Procesar K-ésimo Objeto
+                if (deSeleccionarObjeto == null)
+                {
+                    Console.WriteLine("No hay nada");
+                }
                 if ((deSeleccionarObjeto == null) || deSeleccionarObjeto(Listado.Iesimo(K)))
+                {
                     Aux.Agregar(Listado.Iesimo(K));
+                }
+            }
             // ----- Retornar sub lista
             return Aux;
         }
@@ -113,6 +125,10 @@ namespace ClasesGenerales
                 Listado.Eliminar(Position);
             else
                 Console.WriteLine("El objeto no existe en esta lista");
+        }
+        public object GetElement()
+        {
+            return Listado.AElemento;
         }
         #endregion
     }
