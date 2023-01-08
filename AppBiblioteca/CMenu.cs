@@ -4,7 +4,7 @@ namespace AppBiblioteca
     public class CMenu
     {
 
-        public static void MostrarMenu(CControlTesis Tesis, CControlLectores Lectores, CControlPrestamo Prestamos)
+        public static void MostrarMenu(CControlTesis Tesis, CControlLectores Lectores, CControlPrestamo Prestamos, CControlDevoluciones Devoluciones)
         {
             Console.WriteLine("======== Bibliteca =========");
             Console.WriteLine("1• Tesis");
@@ -15,10 +15,10 @@ namespace AppBiblioteca
 
             Console.Write(" -- Ingrese la opción: ");
             int Opcion = Utilidades.ValidarEntero("Debe ingresar un número del 1 al 4: ", 1, 5);
-            EjecutarOpcion(Opcion, Tesis, Lectores, Prestamos);
+            EjecutarOpcion(Opcion, Tesis, Lectores, Prestamos, Devoluciones);
         }
 
-        private static void EjecutarOpcion(int opcion, CControlTesis Tesis, CControlLectores Lectores, CControlPrestamo Prestamos)
+        private static void EjecutarOpcion(int opcion, CControlTesis Tesis, CControlLectores Lectores, CControlPrestamo Prestamos, CControlDevoluciones Devoluciones)
         {
             switch (opcion)
             {
@@ -31,9 +31,9 @@ namespace AppBiblioteca
                 case 3:
                     Prestamos.Ejecutar();
                     break;
-                // case 4:
-                    // Devoluciones.Ejecutar();
-                    // break;
+                case 4:
+                    Devoluciones.Ejecutar();
+                    break;
                 default:
                     break;
             }
