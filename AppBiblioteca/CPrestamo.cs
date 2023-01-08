@@ -32,15 +32,15 @@ namespace AppBiblioteca
 
         public override bool Equals(object Objeto)
         {
-            if (base.Equals(Objeto))
+            if (Objeto is string IdToCompare)
             {
                 // Retorna 'true' si coincide por ID
-                return true;
+                return Id == IdToCompare;
             }
-            else if (Objeto is CPrestamo TesisAComparar)
+            else if (Objeto is CPrestamo PrestamoAComparar)
             {
                 // Retornará True si buscamos por nombre
-                return TesisAComparar.Id.Contains(Id) || TesisAComparar.IdLector == IdLector;
+                return PrestamoAComparar.Id == Id;
             }
             else
             {

@@ -44,7 +44,7 @@ namespace AppBiblioteca
             if (Objeto is string TextToCompare)
             {
                 // Retornará True si buscamos por nombre o apellido y la cadena pasada es contenida 
-                return (Nombre.ToUpper()).Contains(TextToCompare.ToUpper()) || (Apellido.ToUpper()).Contains(TextToCompare.ToUpper()) || Id.Contains(TextToCompare);
+                return (Nombre.ToUpper()).Contains(TextToCompare.ToUpper()) || (Apellido.ToUpper()).Contains(TextToCompare.ToUpper()) || Id == TextToCompare;
             }
             if (base.Equals(Objeto))
             {
