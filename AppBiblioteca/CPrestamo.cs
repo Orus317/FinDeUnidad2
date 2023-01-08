@@ -45,6 +45,9 @@ namespace AppBiblioteca
                 return false;
             }
         }
+        public string? IdPrestamo(){
+            return Id;
+        }
 
         public override void Mostrar(){
             // Se añade el texto al Mostrar de la clase abstracta
@@ -54,7 +57,7 @@ namespace AppBiblioteca
             Console.WriteLine("Lector: {0}", IdLector);
         }
 
-        public override void Registrar(){
+        public void Registrar(CListaLectores Lectores){
             // Se añaden los requerimientos al ya existente (Id) de la clase abstracta
             base.Registrar();
             Console.WriteLine("Fecha [DD/MM/AA]: ");
@@ -62,7 +65,14 @@ namespace AppBiblioteca
             Console.WriteLine("Identificador de tesis: ");
             IdTesis = Console.ReadLine();
             Console.WriteLine("Identificador del lector : ");
-            IdLector = Console.ReadLine();
+            IdLector = Console.ReadLine() ?? "";
+            // Verificar si el lector existe 
+            while (Lectores.Indice(IdLector) == -1)
+            {
+                Console.WriteLine("El lector no existe");
+                Console.Write("INGRESE Idetinficador del lector: ");
+                IdLector = Console.ReadLine() ?? "";
+            }
         }
 
     }

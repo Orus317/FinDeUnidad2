@@ -6,19 +6,25 @@ namespace AppBiblioteca
     {
         public CListaPrestamo() : base() { }
         #region Metodos
-        public void Agregar()
+        public void Agregar(CListaLectores Lectores)
         {
             // Creación del objeto y registro de los datos a través de consola
             CPrestamo _ = new();
-            _.Registrar();
+            _.Registrar(Lectores);
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
 
-        public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector)
+        public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector, CListaLectores Lectores)
         {
-            CPrestamo _ = new(IdPrestamo, fechaPrestamo, idTesis, idLector);
-            base.Agregar(_);
+            int flag = Lectores.Indice(idLector);
+            if (!flag.Equals(-1))
+            {
+                CPrestamo _ = new(IdPrestamo, fechaPrestamo, idTesis, idLector);
+                base.Agregar(_);
+            }
+            else
+                Console.WriteLine("No existe el lector indicado");
         }
 
         public void Consultar()

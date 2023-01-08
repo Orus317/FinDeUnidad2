@@ -5,14 +5,18 @@ namespace AppBiblioteca
     public class CControlPrestamo : CListaPrestamo
     {
         private CListaPrestamo _ListaPrestamo;
+        private CListaLectores _ListaLectores;
         public CListaPrestamo ListaPrestamo { get => _ListaPrestamo; set => _ListaPrestamo = value; }
+        public CListaLectores ListaLectores { get => _ListaLectores; set => _ListaLectores = value; }
 
         public CControlPrestamo()
         {
             ListaPrestamo = new();
+            ListaLectores = new();
         }
-        public CControlPrestamo(CListaPrestamo listaPrestamo){
+        public CControlPrestamo(CListaPrestamo listaPrestamo, CListaLectores Lectores){
             ListaPrestamo = listaPrestamo;
+            ListaLectores = Lectores;
         }
         #region Metodos
         public void Menu()
@@ -39,7 +43,7 @@ namespace AppBiblioteca
                 switch (Opcion)
                 {
                     case 1:
-                        ListaPrestamo.Agregar();
+                        ListaPrestamo.Agregar(ListaLectores);
                         break;
                     case 2:
                         ListaPrestamo.Consultar();
