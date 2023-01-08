@@ -35,24 +35,6 @@ namespace AppBiblioteca
             Asesor = null;
         }
 
-        public override bool Equals(object Objeto)
-        {
-            if (base.Equals(Objeto))
-            {
-                // Retorna 'true' si coincide por ID
-                return true;
-            }
-            else if (Objeto is CTesis TesisAComparar)
-            {
-                // Retornará True si buscamos por nombre
-                return TesisAComparar.Id.Contains(Id) || TesisAComparar.Titulo == Titulo;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public string? asesor()
         {
             return Asesor;
