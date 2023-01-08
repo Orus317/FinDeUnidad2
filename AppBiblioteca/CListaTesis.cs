@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using ClasesGenerales;
 
 namespace AppBiblioteca
@@ -14,6 +15,13 @@ namespace AppBiblioteca
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
+
+        public void Agregar(string IdTesis, string Titulo, string Autor, int Anio, string Area, string Asesor)
+        {
+            CTesis _ = new(IdTesis, Titulo, Autor, Anio, Area, Asesor);
+            base.Agregar(_);
+        }
+
         public void Consultar()
         {
             Console.WriteLine("Escriba el ID de la tesis a buscar: ");
@@ -21,7 +29,8 @@ namespace AppBiblioteca
             string KeyWord = Console.ReadLine();
             base.Consultar(KeyWord);
         }
-        public void Listar()
+
+        public new void Listar()
         {
             // Se define el delegado para ejecutar la función heredada con el delegado que mostrará cada objeto
             deProcesarObjeto = delegate (Object Objeto)
@@ -29,6 +38,29 @@ namespace AppBiblioteca
                 if (Objeto is CTesis Tesis)
                 {
                     Tesis.Mostrar();
+                }
+            };
+            base.Listar();
+        }
+
+        public void Eliminar()
+        {
+            Console.Write("Escriba el ID de la tesis a eliminar: ");
+            string KeyWord = Console.ReadLine();
+            int Position = Indice(KeyWord);
+            base.Eliminar(Position);
+        }
+
+        // TODO: Lista de tesis de un asesor específico. (IdTesis, Titulo, Autor, Año, Area)
+        public new void ListarAsesor(string asesor)
+        {
+            // Se define el delegado para ejecutar la función heredada con el delegado que mostrará cada objeto
+            deProcesarObjeto = delegate (Object Objeto)
+            {
+                if (Objeto is CTesis Tesis)
+                {
+                    if (Tesis.asesor() == asesor)
+                        Tesis.Mostrar();
                 }
             };
             base.Listar();

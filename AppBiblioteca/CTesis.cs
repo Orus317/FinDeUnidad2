@@ -15,8 +15,9 @@ namespace AppBiblioteca
         public string? Area { get => _Area; set => _Area = value; }
         public string? Asesor { get => _Asesor; set => _Asesor = value; }
 
-        public CTesis(string titulo, string autor, int anio, string area, string asesor)
+        public CTesis(string idTesis, string titulo, string autor, int anio, string area, string asesor)
         {
+            Id = idTesis;
             Titulo = titulo;
             Autor = autor;
             Anio = anio;
@@ -26,8 +27,9 @@ namespace AppBiblioteca
 
         public CTesis()
         {
+            Id = null;
             Titulo = null;
-            Autor = null; 
+            Autor = null;
             Anio = null;
             Area = null;
             Asesor = null;
@@ -43,7 +45,7 @@ namespace AppBiblioteca
             else if (Objeto is CTesis TesisAComparar)
             {
                 // Retornará True si buscamos por nombre
-                return TesisAComparar.Titulo.Contains(Titulo) || TesisAComparar.Autor == Autor;
+                return TesisAComparar.Id.Contains(Id) || TesisAComparar.Titulo == Titulo;
             }
             else
             {
@@ -51,16 +53,23 @@ namespace AppBiblioteca
             }
         }
 
-        public override void Mostrar(){
+        public string? asesor()
+        {
+            return Asesor;
+        }
+
+        public override void Mostrar()
+        {
             base.Mostrar();
             Console.WriteLine("Título: " + Titulo);
             Console.WriteLine("Autor: " + Autor);
-            Console.WriteLine("Año: " + Anio);
+            Console.WriteLine("Año: {0}", Anio);
             Console.WriteLine("Area:" + Area);
             Console.WriteLine("Asesor: " + Asesor);
         }
 
-        public override void Registrar(){
+        public override void Registrar()
+        {
             base.Registrar();
             Console.WriteLine("Título: ");
             Titulo = Console.ReadLine();
@@ -72,6 +81,7 @@ namespace AppBiblioteca
             Area = Console.ReadLine();
             Console.WriteLine("Asesor : ");
             Asesor = Console.ReadLine();
+
         }
     }
 }

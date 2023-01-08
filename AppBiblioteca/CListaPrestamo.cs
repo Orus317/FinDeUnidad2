@@ -14,6 +14,13 @@ namespace AppBiblioteca
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
+
+        public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector)
+        {
+            CPrestamo _ = new(IdPrestamo, fechaPrestamo, idTesis, idLector);
+            base.Agregar(_);
+        }
+
         public void Consultar()
         {
             Console.WriteLine("Escriba el ID del préstamo a buscar: ");
@@ -33,6 +40,14 @@ namespace AppBiblioteca
             };
             base.Listar();
         }
+        public void Eliminar()
+        {
+            Console.Write("Escriba el ID del préstamo a eliminar: ");
+            string KeyWord = Console.ReadLine();
+            int Position = Indice(KeyWord);
+            base.Eliminar(Position);
+        }
+
         #endregion
     }
 }

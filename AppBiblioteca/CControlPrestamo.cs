@@ -11,15 +11,20 @@ namespace AppBiblioteca
         {
             ListaPrestamo = new();
         }
+        public CControlPrestamo(CListaPrestamo listaPrestamo){
+            ListaPrestamo = listaPrestamo;
+        }
         #region Metodos
         public void Menu()
         {
             // Aqui va el menu para lectores
-            Console.WriteLine("===========CONTROL DE LECTORES===========");
+            Console.WriteLine();
+            Console.WriteLine("===========CONTROL DE PRESTAMOS===========");
             Console.WriteLine("1. Registrar préstamo");
             Console.WriteLine("2. Consultar préstamo");
             Console.WriteLine("3. Listar préstamos");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("4. Eliminar Prestamo");
+            Console.WriteLine("5. Salir");
             Console.WriteLine();
             Console.Write(" -- Ingrese la opción: ");
         }
@@ -29,7 +34,7 @@ namespace AppBiblioteca
             do
             {
                 Menu();
-                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 4", 1, 4);
+                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 4", 1, 5);
                 switch (Opcion)
                 {
                     case 1:
@@ -40,6 +45,9 @@ namespace AppBiblioteca
                         break;
                     case 3:
                         ListaPrestamo.Listar();
+                        break;
+                    case 4:
+                        ListaPrestamo.Eliminar();
                         break;
                     default:
                         break;
