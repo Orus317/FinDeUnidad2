@@ -6,11 +6,11 @@ namespace AppBiblioteca
     {
         public CListaPrestamo() : base() { }
         #region Metodos
-        public void Agregar(CListaLectores Lectores)
+        public void Agregar(CListaLectores Lectores, CListaTesis Tesis)
         {
             // Creación del objeto y registro de los datos a través de consola
             CPrestamo _ = new();
-            _.Registrar(Lectores);
+            _.Registrar(Lectores, Tesis);
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }

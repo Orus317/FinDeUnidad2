@@ -6,19 +6,22 @@ namespace AppBiblioteca
     {
         private CListaPrestamo _ListaPrestamo;
         private CListaLectores _ListaLectores;
+        private CListaTesis _ListaTesis;
         public CListaPrestamo ListaPrestamo { get => _ListaPrestamo; set => _ListaPrestamo = value; }
         public CListaLectores ListaLectores { get => _ListaLectores; set => _ListaLectores = value; }
+        public CListaTesis ListaTesis { get => _ListaTesis; set => _ListaTesis = value; }
 
         public CControlPrestamo()
         {
             ListaPrestamo = new();
             ListaLectores = new();
         }
-        public CControlPrestamo(CListaPrestamo listaPrestamo, CListaLectores Lectores){
+        public CControlPrestamo(CListaPrestamo listaPrestamo, CListaLectores Lectores, CListaTesis Tesis)
+        {
             ListaPrestamo = listaPrestamo;
             ListaLectores = Lectores;
+            ListaTesis = Tesis;
         }
-        #region Metodos
         public void Menu()
         {
             // Opciones Con respecto a las tesis
@@ -43,7 +46,7 @@ namespace AppBiblioteca
                 switch (Opcion)
                 {
                     case 1:
-                        ListaPrestamo.Agregar(ListaLectores);
+                        ListaPrestamo.Agregar(ListaLectores, ListaTesis);
                         break;
                     case 2:
                         ListaPrestamo.Consultar();
@@ -60,7 +63,6 @@ namespace AppBiblioteca
 
             } while (0 < Opcion && Opcion < 5);
         }
-        #endregion
 
     }
 }

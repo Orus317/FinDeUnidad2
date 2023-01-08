@@ -57,14 +57,21 @@ namespace AppBiblioteca
             Console.WriteLine("Lector: {0}", IdLector);
         }
 
-        public void Registrar(CListaLectores Lectores){
+        public void Registrar(CListaLectores Lectores, CListaTesis Tesis){
             // Se añaden los requerimientos al ya existente (Id) de la clase abstracta
             base.Registrar();
-            Console.WriteLine("Fecha [DD/MM/AA]: ");
+            Console.Write("Fecha [DD/MM/AA]: ");
             FechaPrestamo = Console.ReadLine();
-            Console.WriteLine("Identificador de tesis: ");
-            IdTesis = Console.ReadLine();
-            Console.WriteLine("Identificador del lector : ");
+            Console.Write("Identificador de tesis: ");
+            IdTesis = Console.ReadLine() ?? "";
+            //Verificar si la tesis existe
+            while (Tesis.Indice(IdTesis) == -1)
+            {
+                Console.WriteLine("La tesis no existe");
+                Console.Write("INGRESE el idetinficador de la tesis: ");
+                IdTesis = Console.ReadLine() ?? "";
+            }
+            Console.Write("Identificador del lector : ");
             IdLector = Console.ReadLine() ?? "";
             // Verificar si el lector existe 
             while (Lectores.Indice(IdLector) == -1)

@@ -66,7 +66,18 @@ namespace AppBiblioteca
             Area = Console.ReadLine();
             Console.WriteLine("Asesor : ");
             Asesor = Console.ReadLine();
-
+        }
+        public override bool Equals(object Objeto)
+        {
+            if (Objeto is string IdToCompare)
+            {
+                return Id == IdToCompare;
+            }
+            else if (Objeto is CTesis TesisToCompare)
+            {
+                return TesisToCompare.Id == Id;
+            }
+            return false;
         }
     }
 }
