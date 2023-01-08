@@ -126,10 +126,6 @@ namespace ClasesGenerales
             else
                 Console.WriteLine("El objeto no existe en esta lista");
         }
-        public object GetElement()
-        {
-            return Listado.AElemento;
-        }
         #endregion
     }
 }
