@@ -16,12 +16,14 @@ namespace AppBiblioteca
         public void Agregar(string IdDevolucion, string FechaDevolucion, string IdPrestamo, CListaPrestamo Prestamos)
         {
             // Método para agregar sin necesidad de registrar a través de consola
-            if (Prestamos.Indice(IdPrestamo) != -1)
+            int flag = Prestamos.Indice(IdPrestamo);
+            if (!flag.Equals(-1))
             {
                 CDevolucion _ = new(IdDevolucion, FechaDevolucion, IdPrestamo);
                 base.Agregar(_);
             }
-            Console.WriteLine("No existe el préstamo indicado");
+            else
+                Console.WriteLine("No existe el préstamo indicado");
         }
         public void Consultar()
         {
