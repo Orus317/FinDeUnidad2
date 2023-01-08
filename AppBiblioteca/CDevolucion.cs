@@ -24,21 +24,33 @@ namespace AppBiblioteca
             FechaDevolucion = null;
             IdPrestamo = null;
         }
-        public override void Registrar()
+        public void Registrar(CListaPrestamo Prestamos)
         {
-            Console.WriteLine("Identificador de devolución : ");
+            Console.Write("Identificador de devolución : ");
             Id = Console.ReadLine();
-            Console.WriteLine("Identificador de préstamo: ");
-            IdPrestamo = Console.ReadLine();
-            Console.WriteLine("Fecha de devolución [DD/MM/AA]: ");
+            Console.Write("Identificador de prestamo: ");
+            IdPrestamo = Console.ReadLine() ?? "";
+            while (Prestamos.Indice(IdPrestamo) == -1)
+            {
+                Console.WriteLine("Este préstamo no existe");
+                Console.Write("INGRESE Idetinficador de prestamo: ");
+                IdPrestamo = Console.ReadLine() ?? "";
+            }
+            Console.Write("Fecha de devolución [DD/MM/AA]: ");
             FechaDevolucion = Console.ReadLine();
+        }
+        public override void Mostrar()
+        {
+            base.Mostrar();
+            Console.WriteLine("Fecha: " + FechaDevolucion);
+            Console.WriteLine("Identificador de préstamo: " + IdPrestamo);
         }
         public override bool Equals(object Objeto)
         {
-            if (base.Equals(Objeto))
+            if (Objeto is string IdToCompare)
             {
                 // Retornará true si coinciden los Id
-                return true;
+                return Id == IdToCompare;
             }
             if (Objeto is CDevolucion DevolucionAComparar)
             {

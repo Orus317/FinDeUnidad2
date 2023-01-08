@@ -42,22 +42,22 @@ Lectores.Agregar("117", "Espinoza", "Ian", "Av. Brasil", "M", 24);
 Lectores.Agregar("118", "Mamamni", "Wilse", "Av. Brasil", "F", 25);
 
 CListaDevoluciones Devoluciones = new();
-Devoluciones.Agregar("3001", "01/10/2022", "2001");
-Devoluciones.Agregar("3002", "10/12/2022", "2002");
-Devoluciones.Agregar("3003", "02/03/2022", "2003");
-Devoluciones.Agregar("3004", "12/04/2022", "2004");
-Devoluciones.Agregar("3005", "17/05/2022", "2005");
-Devoluciones.Agregar("3006", "03/08/2022", "2006");
-Devoluciones.Agregar("3007", "20/04/2022", "2007");
-Devoluciones.Agregar("3008", "01/07/2022", "2008");
-Devoluciones.Agregar("3009", "05/06/2022", "2009");
-Devoluciones.Agregar("3010", "27/08/2022", "2010");
+//Devoluciones.Agregar("3001", "01/10/2022", "2001", Prestamos);
+//Devoluciones.Agregar("3002", "10/12/2022", "2002", Prestamos);
+//Devoluciones.Agregar("3003", "02/03/2022", "2003", Prestamos);
+//Devoluciones.Agregar("3004", "12/04/2022", "2004", Prestamos);
+//Devoluciones.Agregar("3005", "17/05/2022", "2005", Prestamos);
+//Devoluciones.Agregar("3006", "03/08/2022", "2006", Prestamos);
+//Devoluciones.Agregar("3007", "20/04/2022", "2007", Prestamos);
+//Devoluciones.Agregar("3008", "01/07/2022", "2008", Prestamos);
+//Devoluciones.Agregar("3009", "05/06/2022", "2009", Prestamos);
+//Devoluciones.Agregar("3010", "27/08/2022", "2010", Prestamos);
 
 
 CControlLectores nuevoControl_Lectores = new(Lectores);
 CControlTesis nuevoControl_Tesis = new(Tesis);
 CControlPrestamo nuevoControl_Prestamo = new(Prestamos);
-CControlDevoluciones nuevoControl_Devoluciones = new(Devoluciones);
+CControlDevoluciones nuevoControl_Devoluciones = new(Devoluciones, Prestamos);
 
 while (true)
 {

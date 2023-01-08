@@ -5,16 +5,20 @@ namespace AppBiblioteca
     public class CControlDevoluciones
     {
         private CListaDevoluciones _ListaDevoluciones;
+        private CListaPrestamo _ListaPrestamo;
         public CListaDevoluciones ListaDevoluciones { get => _ListaDevoluciones; set => _ListaDevoluciones = value; }
+        public CListaPrestamo ListaPrestamo { get => _ListaPrestamo; set => _ListaPrestamo = value; }
         #region Constructores
-        public CControlDevoluciones()
+        public CControlDevoluciones(CListaPrestamo Prestamos)
         {
+            ListaPrestamo = Prestamos;
             ListaDevoluciones = new();
         }
-        public CControlDevoluciones(CListaDevoluciones listaDevoluciones)
+        public CControlDevoluciones(CListaDevoluciones listaDevoluciones, CListaPrestamo Prestamos)
         {
             // Constructor para trabajar con listas que ya contengan elementos
             ListaDevoluciones = listaDevoluciones;
+            ListaPrestamo = Prestamos;
         }
         #endregion
         #region Metodos
@@ -39,7 +43,7 @@ namespace AppBiblioteca
                 switch (Opcion)
                 {
                     case 1:
-                        ListaDevoluciones.Agregar();
+                        ListaDevoluciones.Agregar(ListaPrestamo);
                         break;
                     case 2:
                         ListaDevoluciones.Consultar();

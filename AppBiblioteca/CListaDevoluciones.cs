@@ -5,19 +5,23 @@ namespace AppBiblioteca
     public class CListaDevoluciones : CListaObjetos
     {
         public CListaDevoluciones() : base() { }
-        public void Agregar()
+        public void Agregar(CListaPrestamo Prestamos)
         {
             // Creación del objeto y registro de los datos a través de consola
-            CLector _ = new();
-            _.Registrar();
+            CDevolucion _ = new();
+            _.Registrar(Prestamos);
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
-        public void Agregar(string IdDevolucion, string FechaDevolucion, string IdPrestamo)
+        public void Agregar(string IdDevolucion, string FechaDevolucion, string IdPrestamo, CListaPrestamo Prestamos)
         {
             // Método para agregar sin necesidad de registrar a través de consola
-            CDevolucion _ = new(IdDevolucion, FechaDevolucion, IdPrestamo);
-            base.Agregar(_);
+            if (Prestamos.Indice(IdPrestamo) != -1)
+            {
+                CDevolucion _ = new(IdDevolucion, FechaDevolucion, IdPrestamo);
+                base.Agregar(_);
+            }
+            Console.WriteLine("No existe el préstamo indicado");
         }
         public void Consultar()
         {
