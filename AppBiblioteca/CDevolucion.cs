@@ -14,20 +14,20 @@ namespace AppBiblioteca
         #endregion
         public CDevolucion(string idDevolucion, string fechaDevolucion, string idPrestamo)
         {
-            IdDevolucion = idDevolucion;
+            Id = idDevolucion;
             IdPrestamo = idPrestamo;
             FechaDevolucion = fechaDevolucion;
         }
         public CDevolucion() 
         { 
-            IdDevolucion = null;
+            Id = null;
             FechaDevolucion = null;
             IdPrestamo = null;
         }
         public override void Registrar()
         {
             Console.WriteLine("Identificador de devolución : ");
-            IdDevolucion = Console.ReadLine();
+            Id = Console.ReadLine();
             Console.WriteLine("Identificador de préstamo: ");
             IdPrestamo = Console.ReadLine();
             Console.WriteLine("Fecha de devolución [DD/MM/AA]: ");
@@ -35,10 +35,15 @@ namespace AppBiblioteca
         }
         public override bool Equals(object Objeto)
         {
+            if (base.Equals(Objeto))
+            {
+                // Retornará true si coinciden los Id
+                return true;
+            }
             if (Objeto is CDevolucion DevolucionAComparar)
             {
                 // Retornará True si buscamos por nombre
-                return DevolucionAComparar.IdDevolucion == IdDevolucion;
+                return DevolucionAComparar.Id == Id;
             }
             else
             {
