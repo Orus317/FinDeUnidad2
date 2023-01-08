@@ -1,80 +1,143 @@
 ﻿namespace EstDatos
 {
-    internal class CPila
+    public class cPila
     {
-        public interface IStack
+        #region ************* ATRIBUTOS ****************
+        private Object aElemento;
+        private cPila aSubPila;
+        #endregion ATRIBUTOS
+
+        #region ************* CONSTRUCTORES***************
+        public cPila()
         {
-            /// <summary>
-            /// Función que retorna si la pila está vacía o no en función de si existe o no un TopElement
-            /// </summary>
-            /// <returns>True or False</returns>
-            public bool IsEmpty();
-            /// <summary>
-            /// Retorna el último elemento de la pila siguiendo el principio LIFO (last in first out)
-            /// </summary>
-            /// <returns><i>El elemento de la cima</i></returns>
-            public object Top();
-            /// <summary>
-            /// Método para agregar un elemento en la cima de la pila
-            /// </summary>
-            /// <param name="Element">Elemento a agregar</param>
-            public void Push(object Element);
-            /// <summary>
-            /// Método para retornar la longitud de la pila o la cantidad de elementos de la pila
-            /// </summary>
-            /// <returns>Entero que representa el <i>número de elemento</i></returns>
-            public int Size();
+            aElemento = null;
+            aSubPila = null;
         }
-        public class CNodoStack
+        /* -------------------------------------------- */
+        protected cPila(Object pElemento, cPila pSubPila)
         {
-            #region Atributos y propiedades/campos
-            private Object? _Element;
-            public object? Element { get => _Element; set => _Element = value; }
-            #endregion
-            #region Constructor
-            public CNodoStack(object? element)
-            {
-                Element = element;
-            }
-            #endregion
-
+            aElemento = pElemento;
+            aSubPila = pSubPila;
         }
-        public class Stack : IStack
+
+        #endregion CONSTRUCTORES
+
+
+        #region *********** METODOS ESTATICOS *************
+        public static cPila Crear()
         {
-            private object? _TopElement;
-            public object? TopElement { get => _TopElement; set => _TopElement = value; }
-            // Constructor para un stack vacío
-            public Stack()
-            {
-                TopElement = null;
-            }
-            // En caso de tener un elemento desde el inicio
-            public Stack(object? top)
-            {
-                TopElement = top;
-            }
-            #region Methods/ Implementation of interface
-            public bool IsEmpty()
-            {
-                return TopElement == null;
-            }
-
-            public object? Top()
-            {
-                return TopElement ?? null;
-            }
-
-            public void Push(object Element)
-            {
-                throw new NotImplementedException();
-
-            }
-
-            public int Size()
-            {
-                throw new NotImplementedException();
-            }
-            #endregion
+            return new cPila();
         }
+        /* -------------------------------------------- */
+        public static cPila Crear(Object pElemento, cPila pSubPila)
+
+        {
+            return new cPila(pElemento, pSubPila);
+        }
+
+        #endregion METODOS ESTATICOS
+
+        #region *********** PROPIEDADES *************
+        private object Elemento
+        {
+            get
+            {
+                return aElemento;
+            }
+            set
+            {
+                aElemento = value;
+            }
+        }
+        /* --------------------------------------------- */
+        private cPila SubPila
+        {
+            get
+            {
+                return aSubPila;
+            }
+            set
+            {
+                aSubPila = value;
+            }
+        }
+
+        #endregion PROPIEDADES
+
+
+        #region *********** OTROS METODOS *************
+        /* --------------------------------------------- */
+        public bool EsVacia()
+        {
+            return ((aElemento == null) && (aSubPila == null));
+        }
+
+        /* --------------------------------------------*/
+
+        public object Cima()
+        {
+            return aElemento;
+        }
+        /* --------------------------------------------- */
+        public void Apilar(Object pElemento)
+        {
+            aSubPila = new cPila(aElemento, aSubPila);
+            aElemento = pElemento;
+        }
+
+        /* --------------------------------------------- */
+        public void Desapilar()
+        {
+            if (!EsVacia())
+            {
+                aElemento = aSubPila.Elemento;
+                aSubPila = aSubPila.SubPila;
+            }
+            //else if (!EsVacia() && returnElement)
+            //{
+            //    string _ = aElemento.ToString() ?? "";
+            //    aElemento = aSubPila.Elemento;
+            //    aSubPila = aSubPila.SubPila;
+            //    return _;
+            //}
+        }
+        public object? Desapilar(bool returnElement)
+        {
+            if (!EsVacia() && returnElement)
+            {
+                string? _ = aElemento.ToString();
+                aElemento = aSubPila.Elemento;
+                aSubPila = aSubPila.SubPila;
+                return _;
+            }
+            return null;
+        }
+        public void Listar()
+        {
+            if (!EsVacia())
+            {
+                Console.Write($"{aElemento}");
+                aSubPila.Listar();
+            }
+        }
+        public string Listar(bool toString = true, string Sum = "")
+        {
+            if (!EsVacia() && toString)
+            {
+                Sum += Cima();
+                return aSubPila.Listar(true, Sum);
+            }
+            return Sum;
+        }
+        public int Longitud(int k = 0)
+        {
+            if (!EsVacia())
+            {
+                k += 1;
+                return aSubPila.Longitud(k);
+            }
+            return k;
+        }
+        #endregion OTROS METODOS
     }
 }
