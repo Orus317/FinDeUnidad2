@@ -18,7 +18,7 @@ namespace AppBiblioteca
         #region Metodos
         public void Menu()
         {
-            // Aqui va el menu para lectores
+            // Opciones Con respecto a las tesis
             Console.WriteLine();
             Console.WriteLine("===========CONTROL DE TESIS===========");
             Console.WriteLine("1. Registrar tesis");
@@ -30,8 +30,10 @@ namespace AppBiblioteca
             Console.WriteLine();
             Console.Write(" -- Ingrese la opción: ");
         }
+
         public void Ejecutar()
         {
+            // Ejecución de las opciones del menú
             int Opcion;
             do
             {
@@ -52,14 +54,13 @@ namespace AppBiblioteca
                         ListaTesis.Eliminar();
                         break;
                     case 5:
-                        Console.WriteLine("Especifique al asesor: ");
-                        ListaTesis.ListarAsesor(Console.ReadLine());
+                        ListaTesis.ListarAsesor();
                         break;
                     default:
                         break;
                 }
 
-            } while (0 < Opcion && Opcion < 5);
+            } while (0 < Opcion && Opcion < 6);
         }
         #endregion
 

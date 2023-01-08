@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using ClasesGenerales;
 
 namespace AppBiblioteca
@@ -51,14 +50,16 @@ namespace AppBiblioteca
             base.Eliminar(Position);
         }
 
-        // TODO: Lista de tesis de un asesor específico. (IdTesis, Titulo, Autor, Año, Area)
-        public new void ListarAsesor(string asesor)
+        public void ListarAsesor()
         {
+            Console.WriteLine("Especifique al asesor: ");
+            string asesor = Console.ReadLine();
             // Se define el delegado para ejecutar la función heredada con el delegado que mostrará cada objeto
             deProcesarObjeto = delegate (Object Objeto)
             {
                 if (Objeto is CTesis Tesis)
                 {
+                    // Se verifica si la tesis coincide con el asesor
                     if (Tesis.asesor() == asesor)
                         Tesis.Mostrar();
                 }

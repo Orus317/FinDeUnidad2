@@ -6,7 +6,7 @@ namespace AppBiblioteca
 
         public static void MostrarMenu(CControlTesis Tesis, CControlLectores Lectores, CControlPrestamo Prestamos, CControlDevoluciones Devoluciones)
         {
-            Console.WriteLine("======== Bibliteca =========");
+            Console.WriteLine("========= Bibliteca =========");
             Console.WriteLine("1• Tesis");
             Console.WriteLine("2• Lectores");
             Console.WriteLine("3• Préstamos");

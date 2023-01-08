@@ -43,6 +43,7 @@ namespace AppBiblioteca
         public void Eliminar()
         {
             Console.Write("Escriba el ID del préstamo a eliminar: ");
+            // Obtención del ID
             string KeyWord = Console.ReadLine();
             int Position = Indice(KeyWord);
             base.Eliminar(Position);

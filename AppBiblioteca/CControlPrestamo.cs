@@ -17,7 +17,7 @@ namespace AppBiblioteca
         #region Metodos
         public void Menu()
         {
-            // Aqui va el menu para lectores
+            // Opciones Con respecto a las tesis
             Console.WriteLine();
             Console.WriteLine("===========CONTROL DE PRESTAMOS===========");
             Console.WriteLine("1. Registrar préstamo");
@@ -30,6 +30,7 @@ namespace AppBiblioteca
         }
         public void Ejecutar()
         {
+            // Ejecución de las opciones del menú
             int Opcion;
             do
             {

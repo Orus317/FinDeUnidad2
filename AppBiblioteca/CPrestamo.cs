@@ -28,8 +28,6 @@ namespace AppBiblioteca
             IdLector = null;
         }
 
-
-
         public override bool Equals(object Objeto)
         {
             if (Objeto is string IdToCompare)
@@ -49,6 +47,7 @@ namespace AppBiblioteca
         }
 
         public override void Mostrar(){
+            // Se añade el texto al Mostrar de la clase abstracta
             base.Mostrar();
             Console.WriteLine("Fecha: " + FechaPrestamo);
             Console.WriteLine("Tesis: " + IdTesis);
@@ -56,6 +55,7 @@ namespace AppBiblioteca
         }
 
         public override void Registrar(){
+            // Se añaden los requerimientos al ya existente (Id) de la clase abstracta
             base.Registrar();
             Console.WriteLine("Fecha [DD/MM/AA]: ");
             FechaPrestamo = Console.ReadLine();

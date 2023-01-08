@@ -1,9 +1,9 @@
 ﻿using ClasesGenerales;
 namespace AppBiblioteca
 {
-    // TODO: CTesis (IdTesis, Titulo, Autor, Año, Area, Asesor)
     public class CTesis : CObjeto
     {
+        //el atributo ID es heredado de la clase abstracta
         private string? _Titulo;
         private string? _Autor;
         private int? _Anio;
@@ -35,6 +35,7 @@ namespace AppBiblioteca
             Asesor = null;
         }
 
+        // Servirá para listar las tesis por Asesor
         public string? asesor()
         {
             return Asesor;
@@ -42,6 +43,7 @@ namespace AppBiblioteca
 
         public override void Mostrar()
         {
+            // Se añade el texto al Mostrar de la clase abstracta
             base.Mostrar();
             Console.WriteLine("Título: " + Titulo);
             Console.WriteLine("Autor: " + Autor);
@@ -52,6 +54,7 @@ namespace AppBiblioteca
 
         public override void Registrar()
         {
+            // Se añaden los requerimientos al ya existente de la clase abstracta
             base.Registrar();
             Console.WriteLine("Título: ");
             Titulo = Console.ReadLine();
