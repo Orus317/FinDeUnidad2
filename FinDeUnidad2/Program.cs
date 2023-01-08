@@ -23,6 +23,13 @@ CListaPrestamo Prestamos = new();
 Prestamos.Agregar("2001", "Fecha 1", "IDtesis1", "IDLector1");
 Prestamos.Agregar("2002", "Fecha 2", "IDtesis2", "IDLector2");
 Prestamos.Agregar("2003", "Fecha 3", "IDtesis3", "IDLector3");
+Prestamos.Agregar("2004", "Fecha 4", "IDtesis4", "IDLector4");
+Prestamos.Agregar("2005", "Fecha 5", "IDtesis5", "IDLector5");
+Prestamos.Agregar("2006", "Fecha 6", "IDtesis6", "IDLector6");
+Prestamos.Agregar("2007", "Fecha 7", "IDtesis7", "IDLector7");
+Prestamos.Agregar("2008", "Fecha 8", "IDtesis8", "IDLector8");
+Prestamos.Agregar("2009", "Fecha 9", "IDtesis9", "IDLector9");
+Prestamos.Agregar("2010", "Fecha 10", "IDtesis10", "IDLector10");
 
 CListaLectores Lectores = new();
 Lectores.Agregar("111", "Ramirez", "Alberto", "Av. Brasil", "M", 18);
