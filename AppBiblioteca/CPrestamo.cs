@@ -4,12 +4,17 @@ namespace AppBiblioteca
     // TODO: CPrestamo (IdPrestamo, FechaPrestamo, IdTesis, IdLector)
     public class CPrestamo : CObjeto
     {
-        private string _FechaPrestamo;
-        private string _IdTesis;
-        private string _IdLector;
+        private string? _FechaPrestamo;
+        private string? _IdTesis;
+        private string? _IdLector;
 
-        public CPrestamo(string fechaPrestamo, string idTesis, string idLector)
+        public string? FechaPrestamo { get => _FechaPrestamo; set => _FechaPrestamo = value; }
+        public string? IdTesis { get => _IdTesis; set => _IdTesis = value; }
+        public string? IdLector { get => _IdLector; set => _IdLector = value; }
+
+        public CPrestamo(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector)
         {
+            Id = IdPrestamo;
             FechaPrestamo = fechaPrestamo;
             IdTesis = idTesis;
             IdLector = idLector;
@@ -17,14 +22,12 @@ namespace AppBiblioteca
 
         public CPrestamo()
         {
+            Id = null;
             FechaPrestamo = null;
             IdTesis = null;
             IdLector = null;
         }
 
-        public string FechaPrestamo { get => _FechaPrestamo; set => _FechaPrestamo = value; }
-        public string IdTesis { get => _IdTesis; set => _IdTesis = value; }
-        public string IdLector { get => _IdLector; set => _IdLector = value; }
 
 
         public override bool Equals(object Objeto)
@@ -49,7 +52,7 @@ namespace AppBiblioteca
             base.Mostrar();
             Console.WriteLine("Fecha: " + FechaPrestamo);
             Console.WriteLine("Tesis: " + IdTesis);
-            Console.WriteLine("Lector: " + IdLector);
+            Console.WriteLine("Lector: {0}", IdLector);
         }
 
         public override void Registrar(){

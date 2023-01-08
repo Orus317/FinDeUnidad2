@@ -21,6 +21,7 @@ namespace AppBiblioteca
         public void Menu()
         {
             // Aqui va el menu para lectores
+            Console.WriteLine();
             Console.WriteLine("===========CONTROL DE LECTORES===========");
             Console.WriteLine("1. Registrar lector");
             Console.WriteLine("2. Consultar lector");
