@@ -15,10 +15,11 @@ namespace AppBiblioteca
             base.Agregar(_);
         }
 
-        public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector, CListaLectores Lectores)
+        public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector, CListaLectores Lectores, CListaTesis Tesis)
         {
-            int flag = Lectores.Indice(idLector);
-            if (!flag.Equals(-1))
+            int flagLector = Lectores.Indice(idLector);
+            int flagTesis = Tesis.Indice(idTesis);
+            if (!flagLector.Equals(-1) && !flagTesis.Equals(-1))
             {
                 CPrestamo _ = new(IdPrestamo, fechaPrestamo, idTesis, idLector);
                 base.Agregar(_);
