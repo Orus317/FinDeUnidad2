@@ -82,6 +82,29 @@ CListaDevoluciones Devoluciones = new();
 //Devoluciones.Agregar("3008", "01/07/2022", "2008", Prestamos);
 //Devoluciones.Agregar("3009", "05/06/2022", "2009", Prestamos);
 //Devoluciones.Agregar("3010", "27/08/2022", "2010", Prestamos);
+//Devoluciones.Agregar("3011", "01/10/2022", "2011", Prestamos);
+//Devoluciones.Agregar("3012", "10/12/2022", "2012", Prestamos);
+//Devoluciones.Agregar("3013", "02/03/2022", "2013", Prestamos);
+//Devoluciones.Agregar("3014", "12/04/2022", "2014", Prestamos);
+//Devoluciones.Agregar("3015", "17/05/2022", "2015", Prestamos);
+//Devoluciones.Agregar("3016", "03/08/2022", "2016", Prestamos);
+//Devoluciones.Agregar("3017", "20/04/2022", "2017", Prestamos);
+//Devoluciones.Agregar("3018", "01/07/2022", "2018", Prestamos);
+//Devoluciones.Agregar("3019", "05/06/2022", "2019", Prestamos);
+//Devoluciones.Agregar("3020", "27/08/2022", "2020", Prestamos);
+//Devoluciones.Agregar("3021", "01/10/2022", "2021", Prestamos);
+//Devoluciones.Agregar("3022", "10/12/2022", "2022", Prestamos);
+//Devoluciones.Agregar("3023", "02/03/2022", "2023", Prestamos);
+//Devoluciones.Agregar("3024", "12/04/2022", "2024", Prestamos);
+//Devoluciones.Agregar("3025", "17/05/2022", "2025", Prestamos);
+//Devoluciones.Agregar("3026", "03/08/2022", "2026", Prestamos);
+//Devoluciones.Agregar("3027", "20/04/2022", "2027", Prestamos);
+//Devoluciones.Agregar("3028", "01/07/2022", "2028", Prestamos);
+//Devoluciones.Agregar("3029", "05/06/2022", "2029", Prestamos);
+//Devoluciones.Agregar("3030", "27/08/2022", "2030", Prestamos);
+
+
+
 
 
 CControlLectores nuevoControl_Lectores = new(Lectores);
