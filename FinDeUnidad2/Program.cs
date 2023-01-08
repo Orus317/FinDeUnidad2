@@ -103,9 +103,6 @@ Devoluciones.Agregar("3028", "01/07/2022", "2028", Prestamos);
 Devoluciones.Agregar("3029", "05/06/2022", "2029", Prestamos);
 Devoluciones.Agregar("3030", "27/08/2022", "2030", Prestamos);
 
-
-
-
 CControlLectores nuevoControl_Lectores = new(Lectores);
 CControlTesis nuevoControl_Tesis = new(Tesis);
 CControlPrestamo nuevoControl_Prestamo = new(Prestamos);
