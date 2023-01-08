@@ -5,6 +5,7 @@ namespace AppBiblioteca
 {
     public class CListaPrestamo : CListaObjetos
     {
+        // Constructores heredados
         public CListaPrestamo() : base() { }
 
         public CListaPrestamo(CListaRecursiva Lista) : base(Lista)
@@ -20,9 +21,9 @@ namespace AppBiblioteca
             // Este método ya verifica si el elemento ya existe previamente en la lista
             base.Agregar(_);
         }
-
         public void Agregar(string IdPrestamo, string fechaPrestamo, string idTesis, string idLector, CListaLectores Lectores, CListaTesis Tesis)
         {
+            // Método agregar con los atributos, para poder agregar elementos desde consola
             int flagLector = Lectores.Indice(idLector);
             int flagTesis = Tesis.Indice(idTesis);
             if (!flagLector.Equals(-1) && !flagTesis.Equals(-1))
