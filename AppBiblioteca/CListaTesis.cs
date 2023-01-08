@@ -1,10 +1,12 @@
 using ClasesGenerales;
+using EstDatos;
 
 namespace AppBiblioteca
 {
     public class CListaTesis : CListaObjetos
     {
         public CListaTesis() : base() { }
+        public CListaTesis(CListaRecursiva Lista) : base(Lista) {}
         #region Metodos
         public void Agregar()
         {
@@ -52,7 +54,7 @@ namespace AppBiblioteca
 
         public void ListarAsesor()
         {
-            Console.WriteLine("Especifique al asesor: ");
+            Console.Write("Especifique al asesor: ");
             string asesor = Console.ReadLine();
             // Se define el delegado para ejecutar la función heredada con el delegado que mostrará cada objeto
             deProcesarObjeto = delegate (Object Objeto)
@@ -65,6 +67,23 @@ namespace AppBiblioteca
                 }
             };
             base.Listar();
+        }
+        public void FiltrarAnnio()
+        {
+            // Ingreso del annio deseado
+            Console.Write("Ingrese el año a comparar: ");
+            int annio = Utilidades.ValidarEntero("El número debe ser positivo", 0, int.MaxValue);
+            // Declaración del delegado que filtra según año
+            deSeleccionarObjeto = delegate (object o)
+            {
+                CTesis _ = (CTesis) o;
+                return _.Anio >= annio;
+            };
+            CListaRecursiva _ = GenerarSubLista();
+            CListaTesis SubLista = new(_);
+            Console.WriteLine("*************************FILTRO POR AÑO*************************");
+            SubLista.Listar();
+            Console.WriteLine("****************************************************************");
         }
         #endregion
     }
