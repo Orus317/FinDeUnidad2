@@ -85,6 +85,35 @@ namespace AppBiblioteca
             SubLista.Listar();
             Console.WriteLine("****************************************************************");
         }
+        public void Top3Asesores()
+        {
+            // Generar una lista que contenga el nombre de todos los asesores, aun con repeticiones
+            // Contar las repeticiones de la lista
+            List<string> Asesores = new();
+            deSeleccionarObjeto = delegate (object Objeto)
+            {
+                // Se crea una lista que solo contenga a los asesores
+                CTesis TesisToCompare = (CTesis)Objeto;
+                string Asesor = TesisToCompare.Asesor.ToUpper();
+                Asesores.Add(Asesor);
+                return true;
+            };
+            // Una vez se ejecuta generar sub lista se modifica la lista Asesor por referencia
+            GenerarSubLista();
+            // Se agrupan los asesores y se cuentan las ocurrencias de cada asesor
+            var Enumerado = Asesores.GroupBy(i => i);
+            // Se ordenan descendentemente
+            Enumerado = Enumerado.OrderByDescending(i => i.Count());
+            // Se crea un contador para que solo se muestren los tres asesores con más incidencias
+            int k = 0;
+            foreach (var elemento in Enumerado)
+            {
+                Console.WriteLine("--> (Asesor) {0} asesoró {1} tesi(s)", elemento.Key, elemento.Count());
+                k++;
+                if (k == 3)
+                    break;
+            }
+        }
         #endregion
     }
 }

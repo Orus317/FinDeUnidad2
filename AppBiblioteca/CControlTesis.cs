@@ -27,7 +27,8 @@ namespace AppBiblioteca
             Console.WriteLine("4. Eliminar tesis");
             Console.WriteLine("5. Listar tesis por asesor");
             Console.WriteLine("6. Listar tesis por año");
-            Console.WriteLine("7. Salir");
+            Console.WriteLine("7. Top 3 docentes con más asesorías");
+            Console.WriteLine("8. Salir");
             Console.WriteLine();
             Console.Write(" -- Ingrese la opción: ");
         }
@@ -39,7 +40,7 @@ namespace AppBiblioteca
             do
             {
                 Menu();
-                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 6", 1, 7);
+                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 7", 1, 8);
                 switch (Opcion)
                 {
                     case 1:
@@ -60,11 +61,14 @@ namespace AppBiblioteca
                     case 6:
                         ListaTesis.FiltrarAnnio();
                         break;
+                    case 7:
+                        ListaTesis.Top3Asesores();
+                        break;
                     default:
                         break;
                 }
 
-            } while (0 < Opcion && Opcion < 6);
+            } while (0 < Opcion && Opcion < 7);
         }
         #endregion
 
