@@ -35,17 +35,43 @@ namespace AppBiblioteca
         }
         public void NoDevueltos(CListaDevoluciones Devoluciones)
         {
+            // Se crea un delegado que retorne un booleano que indique si una devolución no registra entre los prestamos
             deSeleccionarObjeto = delegate (object O)
             {
+                // Se castea el objeto como un prestamo para poder comparar
                 CPrestamo PrestamoToCompare = (CPrestamo)O;
                 return Devoluciones.Indice(PrestamoToCompare) == -1;
             };
+            // Se genera la sublista con el delegado que se declaro
             CListaRecursiva _ = GenerarSubLista();
+            // Se construye otra lista de prestamos para acceder a todos las funcionalidades
             CListaPrestamo SubLista = new(_);
             Console.WriteLine($"*****************************TESIS NO DEVUELTAS*****************************");
             SubLista.Listar();
             Console.WriteLine($"****************************************************************************");
         }
+        public void FiltraPorFecha()
+        {
+            // Se obtiene la fecha
+            Console.Write("Ingrese una fecha en el formato [DD/MM/AA]: ");
+            string fecha = Console.ReadLine();
+            // Se crea un delegado que retorne un booleano que indique si una devolución no registra entre los prestamos
+            deSeleccionarObjeto = delegate (object o)
+            {
+                // Se castea el objeto como un prestamo para poder acceder al atributo de la fecha y compararlo con la fecha que dio el usuario
+                CPrestamo _ = (CPrestamo)o;
+                return _.FechaPrestamo == fecha;
+            };
+            // Se genera la sublista con el delegado que se declaro
+            CListaRecursiva _ = GenerarSubLista();
+            // Se construye otra lista de prestamos para acceder a todos las funcionalidades
+            CListaPrestamo SubLista = new(_);
+            Console.WriteLine($"*****************************POR FECHA*****************************");
+            SubLista.Listar();
+            Console.WriteLine($"*******************************************************************");
+
+        }
+
         public void Consultar()
         {
             Console.WriteLine("Escriba el ID del préstamo a buscar: ");

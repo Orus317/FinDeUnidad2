@@ -35,7 +35,8 @@ namespace AppBiblioteca
             Console.WriteLine("3. Listar préstamos");
             Console.WriteLine("4. Eliminar Prestamo");
             Console.WriteLine("5. Listar tesis no devueltas");
-            Console.WriteLine("6. Salir");
+            Console.WriteLine("6. Listar prestamos en una determinada fecha");
+            Console.WriteLine("7. Salir");
             Console.WriteLine();
             Console.Write(" -- Ingrese la opción: ");
         }
@@ -46,7 +47,7 @@ namespace AppBiblioteca
             do
             {
                 Menu();
-                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 4", 1, 5);
+                Opcion = Utilidades.ValidarEntero("Ingrese un número entre 1 y 7", 1, 7);
                 switch (Opcion)
                 {
                     case 1:
@@ -63,12 +64,15 @@ namespace AppBiblioteca
                         break;
                     case 5:
                         ListaPrestamo.NoDevueltos(ListaDevoluciones);
-                    break;
+                        break;
+                        case 6:
+                        ListaPrestamo.FiltraPorFecha();
+                        break;
                     default:
                         break;
                 }
 
-            } while (0 < Opcion && Opcion < 6);
+            } while (0 < Opcion && Opcion < 7);
         }
 
     }
